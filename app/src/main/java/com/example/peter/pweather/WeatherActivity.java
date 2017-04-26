@@ -25,7 +25,6 @@ import okhttp3.Response;
 
 public class WeatherActivity extends AppCompatActivity {
 
-
     private ScrollView weatherLayout;
 
     private TextView titleCity;
@@ -67,11 +66,9 @@ public class WeatherActivity extends AppCompatActivity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String weatherString = prefs.getString("weather", null);
         if (weatherString != null) {
-            //
             Weather weather = Utility.handleWeatherResponse(weatherString);
             showWeatherInfo(weather);
         } else {
-            //
             String weatherId = getIntent().getStringExtra("weather_id");
             weatherLayout.setVisibility(View.INVISIBLE);
             requestWeather(weatherId);
@@ -80,7 +77,7 @@ public class WeatherActivity extends AppCompatActivity {
 
     public void requestWeather(final String weatherId) {
         String weatherUrl = "http://guolin.tech/api/weather?cityid=" +
-                weatherId + "&key=bc0418b57b2d4918819d3974ac1285d9";
+                weatherId + "&key=471342edb1a1487c853a7e3a7521d4e2";
         HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
