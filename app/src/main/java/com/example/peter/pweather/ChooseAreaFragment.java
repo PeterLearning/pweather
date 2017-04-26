@@ -2,9 +2,7 @@ package com.example.peter.pweather;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.media.session.MediaControllerCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +20,6 @@ import com.example.peter.pweather.util.HttpUtil;
 import com.example.peter.pweather.util.Utility;
 
 import org.litepal.crud.DataSupport;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,6 +34,7 @@ import okhttp3.Response;
  */
 
 public class ChooseAreaFragment extends Fragment {
+
     public static final int LEVEL_PROVINCE = 0;
 
     public static final int LEVEL_CITY = 1;
@@ -89,7 +87,6 @@ public class ChooseAreaFragment extends Fragment {
         listView = (ListView) view.findViewById(R.id.list_view);
         adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, dataList);
         listView.setAdapter(adapter);
-
         return view;
     }
 
@@ -100,8 +97,7 @@ public class ChooseAreaFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View parent, int position, long id) {
                 if (currentLevel == LEVEL_PROVINCE) {
-                    selectedProvince = provinceList.get
-                            (position);
+                    selectedProvince = provinceList.get(position);
                     queryCities();
                 } else if (currentLevel == LEVEL_CITY) {
                     selectedCity = cityList.get(position);
@@ -226,25 +222,17 @@ public class ChooseAreaFragment extends Fragment {
     private void showProgressDialog() {
         if (progressDialog == null) {
             progressDialog = new ProgressDialog(getActivity());
-            progressDialog.setMessage("姝ｅ湪鍔犺浇...");
+            progressDialog.setMessage("正在加载...");
             progressDialog.setCanceledOnTouchOutside(false);
         }
         progressDialog.show();
     }
 
-    /**
-     * 鍏抽棴杩涘害瀵硅瘽妗?     */
+
     private void closeProgressDialog() {
         if (progressDialog != null) {
             progressDialog.dismiss();
         }
     }
-
-
-
-
-
-
-
-
+    
 }
